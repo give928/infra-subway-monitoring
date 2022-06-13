@@ -1,4 +1,4 @@
-import LinePage from '@/views/line/LinePage'
+const LinePage = () => import(/* webpackChunkName: "js/line/line" */'@/views/line/LinePage')
 
 const lineRoutes = [
   {
