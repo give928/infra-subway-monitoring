@@ -38,7 +38,7 @@
 
 ##### cloudwatch logs agent 설치
 ```shell
-# pythone 설치
+# python 설치
 $ sudo apt install python2.7 # cloudwatch logs agent only supports python version 2.6 - 3.5
 $ ls /usr/bin/python*
 $ sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
