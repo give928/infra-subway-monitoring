@@ -77,18 +77,18 @@ public class LoggingMethodAspect {
         Object[] args = joinPoint.getArgs();
         LogstashMarker logstashMarker = Markers.empty();
         IntStream.range(0, parameterNames.length)
-                .forEach(i -> logstashMarker.and(makeArgumentMarker(parameterNames, args, i)));
+                .forEach(i -> logstashMarker.and(makeArgumentMarker(parameterNames[i], args[i])));
         return logstashMarker;
     }
 
-    private LogstashMarker makeArgumentMarker(String[] parameterNames, Object[] args, int i) {
-        if (args[i].getClass().getSimpleName().endsWith("List")) {
-            return appendRaw(parameterNames[i], convertJsonString((List<?>) args[i]));
+    private LogstashMarker makeArgumentMarker(String parameterName, Object arg) {
+        if (arg.getClass().getSimpleName().endsWith("List")) {
+            return appendRaw(parameterName, convertJsonString((List<?>) arg));
         }
-        if (args[i].getClass().getSimpleName().endsWith("Map")) {
-            return append(parameterNames[i], appendEntries((Map<?, ?>) args[i]));
+        if (arg.getClass().getSimpleName().endsWith("Map")) {
+            return append(parameterName, appendEntries((Map<?, ?>) arg));
         }
-        return append(parameterNames[i], args[i]);
+        return append(parameterName, arg);
     }
 
     private String convertJsonString(List<?> values) {

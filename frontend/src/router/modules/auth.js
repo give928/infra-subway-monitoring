@@ -1,7 +1,7 @@
-import LoginPage from '@/views/auth/LoginPage'
-import JoinPage from '@/views/auth/JoinPage'
-import Mypage from '@/views/auth/Mypage'
-import MypageEdit from '@/views/auth/MypageEdit'
+const LoginPage = () => import(/* webpackChunkName: "js/auth/login" */'@/views/auth/LoginPage')
+const JoinPage = () => import(/* webpackChunkName: "js/auth/join" */'@/views/auth/JoinPage')
+const Mypage = () => import(/* webpackChunkName: "js/auth/mypage" */'@/views/auth/Mypage')
+const MypageEdit = () => import(/* webpackChunkName: "js/auth/mypage-edit" */'@/views/auth/MypageEdit')
 
 const authRoutes = [
   {
